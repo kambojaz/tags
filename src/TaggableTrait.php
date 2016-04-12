@@ -208,6 +208,24 @@ trait TaggableTrait
 
         return true;
     }
+    
+    /**
+     * {@inheritdoc}
+     */
+    public function getTags($format = 'array') {
+
+        $entityTags = $this->tags->lists('name')->all();
+
+        if($format == 'array') {
+            
+            return $entityTags;
+        }
+        else {
+            
+            return implode(',', $entityTags);
+        }
+    }
+    
 
     /**
      * {@inheritdoc}
@@ -294,7 +312,7 @@ trait TaggableTrait
      */
     protected function generateTagSlug($name)
     {
-        return call_user_func(static::$slugGenerator, $name);
+        return call_user_func(static::$tagsSlugGenerator, $name);
     }
 
     /**
