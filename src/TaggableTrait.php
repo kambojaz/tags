@@ -111,7 +111,7 @@ trait TaggableTrait
         $instance = new static;
 
         return $instance->createTagsModel()->whereNamespace(
-            $instance->getEntityClassName()
+            $instance->getTagsEntityClassName()
         );
     }
 
@@ -216,7 +216,7 @@ trait TaggableTrait
     {
         $tag = $this->createTagsModel()->firstOrNew([
             'slug'      => $this->generateTagSlug($name),
-            'namespace' => $this->getEntityClassName(),
+            'namespace' => $this->getTagsEntityClassName(),
         ]);
 
         if (! $tag->exists) {
@@ -237,7 +237,7 @@ trait TaggableTrait
      */
     public function removeTag($name)
     {
-        $namespace = $this->getEntityClassName();
+        $namespace = $this->getTagsEntityClassName();
 
         $tag = $this
             ->createTagsModel()
@@ -302,7 +302,7 @@ trait TaggableTrait
      *
      * @return string
      */
-    protected function getEntityClassName()
+    protected function getTagsEntityClassName()
     {
         if (isset(static::$entityNamespace)) {
             return static::$entityNamespace;
