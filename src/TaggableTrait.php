@@ -43,7 +43,7 @@ trait TaggableTrait
      *
      * @var string
      */
-    protected static $slugGenerator = 'Illuminate\Support\Str::slug';
+    protected static $tagsSlugGenerator = 'Illuminate\Support\Str::slug';
 
     /**
      * {@inheritdoc}
@@ -82,17 +82,17 @@ trait TaggableTrait
     /**
      * {@inheritdoc}
      */
-    public static function getSlugGenerator()
+    public static function getTagsSlugGenerator()
     {
-        return static::$slugGenerator;
+        return static::$tagsSlugGenerator;
     }
 
     /**
      * {@inheritdoc}
      */
-    public static function setSlugGenerator($slugGenerator)
+    public static function setTagsSlugGenerator($slugGenerator)
     {
-        static::$slugGenerator = $slugGenerator;
+        static::$tagsSlugGenerator = $slugGenerator;
     }
 
     /**
